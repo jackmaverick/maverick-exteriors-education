@@ -16,58 +16,75 @@ const { title, description = "Educational resources from Maverick Exteriors - Se
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} | Maverick Exteriors</title>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 		<style>
+			* {
+				font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			}
+			.card-hover {
+				transition: all 0.2s ease-in-out;
+			}
+			.card-hover:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+			}
+			.heading-font {
+				font-weight: 800;
+				letter-spacing: 0.025em;
+				text-transform: uppercase;
+			}
 			@media print {
 				.no-print { display: none !important; }
 				.print-only { display: block !important; }
 				body { font-size: 12pt; }
-				h1 { font-size: 18pt; }
-				h2 { font-size: 16pt; }
-				h3 { font-size: 14pt; }
+				h1 { font-size: 24pt; }
+				h2 { font-size: 20pt; }
+				h3 { font-size: 16pt; }
+				.card-hover { box-shadow: none !important; transform: none !important; }
 			}
 		</style>
 	</head>
-	<body class="min-h-screen bg-white text-gray-900">
-		<header class="bg-blue-800 text-white py-6 no-print">
-			<div class="max-w-4xl mx-auto px-4">
-				<div class="flex items-center justify-between">
+	<body class="min-h-screen bg-gray-50 text-gray-900 antialiased">
+		<header class="bg-white shadow-sm border-b-2 border-gray-100 no-print">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="flex items-center justify-between py-6">
 					<div>
-						<h1 class="text-2xl font-bold">Maverick Exteriors</h1>
-						<p class="text-blue-200">Serving Kansas City Since 1992</p>
+						<h1 class="text-3xl font-black text-gray-900 heading-font">Maverick Exteriors</h1>
+						<p class="text-sm font-medium text-gray-600">Serving Kansas City Since 1992</p>
 					</div>
 					<div class="text-right">
-						<p class="font-semibold">913-268-6052</p>
-						<p class="text-blue-200">Kansas City, Kansas</p>
+						<div class="text-2xl font-bold text-blue-600">913-268-6052</div>
+						<p class="text-sm font-medium text-gray-600">Kansas City, Kansas</p>
 					</div>
 				</div>
 			</div>
 		</header>
 
-		<main class="max-w-4xl mx-auto px-4 py-8">
+		<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 			<slot />
 		</main>
 
-		<footer class="bg-gray-100 py-8 mt-16 no-print">
-			<div class="max-w-4xl mx-auto px-4 text-center">
-				<div class="grid md:grid-cols-3 gap-8">
+		<footer class="bg-white border-t-2 border-gray-100 mt-16 no-print">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+				<div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
 					<div>
-						<h3 class="font-semibold mb-2">Contact Us</h3>
-						<p>913-268-6052</p>
-						<p>Kansas City, Kansas</p>
+						<h3 class="font-bold text-gray-900 mb-3 heading-font text-sm">Contact Us</h3>
+						<p class="font-semibold text-lg text-blue-600">913-268-6052</p>
+						<p class="text-gray-600 font-medium">Kansas City, Kansas</p>
 					</div>
 					<div>
-						<h3 class="font-semibold mb-2">Services</h3>
-						<p>Roofing • Siding • Gutters</p>
-						<p>Storm Damage Repair</p>
+						<h3 class="font-bold text-gray-900 mb-3 heading-font text-sm">Services</h3>
+						<p class="text-gray-700 font-medium">Roofing • Siding • Gutters</p>
+						<p class="text-gray-700 font-medium">Storm Damage Repair</p>
 					</div>
 					<div>
-						<h3 class="font-semibold mb-2">Experience</h3>
-						<p>30+ Years Serving KC</p>
-						<p>Insurance Claim Specialists</p>
+						<h3 class="font-bold text-gray-900 mb-3 heading-font text-sm">Experience</h3>
+						<p class="text-gray-700 font-medium">30+ Years Serving KC</p>
+						<p class="text-gray-700 font-medium">Insurance Claim Specialists</p>
 					</div>
 				</div>
-				<div class="mt-6 pt-6 border-t border-gray-300">
-					<p class="text-sm text-gray-600">
+				<div class="mt-8 pt-8 border-t border-gray-200 text-center">
+					<p class="text-sm text-gray-500">
 						© 2024 Maverick Exteriors. Educational materials provided for customer reference.
 					</p>
 				</div>
@@ -76,9 +93,9 @@ const { title, description = "Educational resources from Maverick Exteriors - Se
 
 		<!-- Print-only header -->
 		<div class="print-only hidden">
-			<div class="text-center mb-6">
-				<h1 class="text-xl font-bold">Maverick Exteriors</h1>
-				<p class="text-sm">913-268-6052 • Kansas City, Kansas • Serving KC Since 1992</p>
+			<div class="text-center mb-8">
+				<h1 class="text-2xl font-black heading-font">Maverick Exteriors</h1>
+				<p class="text-sm font-medium">913-268-6052 • Kansas City, Kansas • Serving KC Since 1992</p>
 			</div>
 		</div>
 	</body>
