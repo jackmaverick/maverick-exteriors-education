@@ -1,0 +1,39 @@
+---
+export interface Props {
+  pageTitle: string;
+  filename: string;
+}
+
+const { pageTitle, filename } = Astro.props;
+const currentUrl = Astro.url.href;
+---
+
+<div class="pdf-download-section bg-blue-50 border-2 border-blue-200 rounded-xl p-6 no-print mt-8">
+  <div class="flex items-center justify-between">
+    <div>
+      <h3 class="font-bold text-blue-900 mb-2 heading-font text-lg">📄 Download PDF Version</h3>
+      <p class="text-blue-800 font-medium text-sm">
+        Get a print-friendly PDF copy of this {pageTitle.toLowerCase()} for your records.
+      </p>
+    </div>
+    <button
+      onclick={`downloadPDF('${currentUrl}', '${filename}')`}
+      class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-bold heading-font text-sm"
+    >
+      <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+      </svg>
+      Download PDF
+    </button>
+  </div>
+</div>
+
+<script>
+  function downloadPDF(pageUrl, filename) {
+    const pdfUrl = `/api/generate-pdf?url=${encodeURIComponent(pageUrl)}&filename=${encodeURIComponent(filename)}`;
+    window.open(pdfUrl, '_blank');
+  }
+
+  // Make function globally available
+  window.downloadPDF = downloadPDF;
+</script>
